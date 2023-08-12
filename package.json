@@ -21,8 +21,5 @@
   },
   "workspaces": [
     "packages/*"
-  ],
-  "dependencies": {
-    "@aws-cdk/aws-cognito": "^1.204.0"
-  }
+  ]
 }
