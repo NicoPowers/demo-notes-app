@@ -22,6 +22,13 @@ export function FrontendStack({ stack, app }: StackContext) {
       REACT_APP_IDENTITY_POOL_ID: auth.cognitoIdentityPoolId!,
       REACT_APP_USER_POOL_CLIENT_ID: auth.userPoolClientId,
     },
+    customDomain:
+      app.stage === "prod"
+        ? {
+            domainName: "sst-demo-notes-app.click",
+            domainAlias: "app.sst-demo-notes-app.click",
+          }
+        : undefined,
   });
   // Show the url in the output
   stack.addOutputs({

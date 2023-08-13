@@ -7,6 +7,7 @@ export function ApiStack({ stack, app }: StackContext) {
 
   // Create APi
   const api = new Api(stack, "Api", {
+    customDomain: app.stage === "prod" ? "api.sst-demo-notes-app.click" : undefined,
     defaults: {
       authorizer: "iam",
       function: {
@@ -27,7 +28,7 @@ export function ApiStack({ stack, app }: StackContext) {
   });
 
   stack.addOutputs({
-    ApiEndpoint: api.url,
+    ApiEndpoint: api.customDomainUrl || api.url,
   });
 
   return { api };
